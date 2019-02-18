@@ -1,5 +1,11 @@
 {
   "name": "app1",
   "integrations": {},
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies":[
+    {
+      "path":"/v1",
+      "proxyUrl": "https://webapi.segundamano.mx/nga/api/v1/public"
+    }
+  ]
 }

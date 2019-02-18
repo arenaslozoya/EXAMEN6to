@@ -1,14 +1,41 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+<ion-header >
+  <ion-toolbar >
+      <ion-buttons start>
+        <button ion-button icon-only (click)= "favoritos()">
+          <ion-icon name="star"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title style = background-color:#2E3660>
+      Segunda Mano
     </ion-title>
-  </ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="buscar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding style = background-color:#65678C>
+ <ion-grid>
+   <ion-row>
+     <ion-col *ngFor="let mascota of mascotas" col-6>
+       <ion-card (click)= "VerMascota(mascota)">
+         <img *ngIf="mascota.ad.hasOwnProperty('thumbnail')"
+          src= "http://img.segundamano.mx/cover/{{mascota.ad.thumbnail.path}}">
+          <img *ngIf="!mascota.ad.hasOwnProperty('thumbnail')" 
+          src="../assets/perro.png">
+         <ion-card-content>
+           <h2 *ngIf = "mascota.ad.hasOwnProperty('subject')">
+            {{mascota.ad.subject}}
+           </h2>
+           <p>{{mascota.ad.locations[0].locations[0].label}}, {{mascota.ad.locations[0].label}}</p>
+           <h2 *ngIf = "mascota.ad.hasOwnProperty('list_price')">
+            {{mascota.ad.list_price.label}}
+           </h2>
+         </ion-card-content>
+       </ion-card>
+     </ion-col>
+   </ion-row>
+ </ion-grid>
 </ion-content>

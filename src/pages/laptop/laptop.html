@@ -1,0 +1,49 @@
+<!--
+  Generated template for the LaptopPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="favoritos()">
+        <ion-icon name="star"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title style = background-color:#D33D3A>
+      Segunda Mano
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="buscar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding style = background-color:#DD7262>
+<ion-grid>
+  <ion-row>
+    <ion-col *ngFor="let laptop of laptops" col-6>
+      <ion-card (click) = "VerLaptop(laptop)">
+        <img *ngIf="laptop.ad.hasOwnProperty('thumbnail')"
+          src="http://img.segundamano.mx/cover/{{laptop.ad.thumbnail.path}}">
+          <img *ngIf="!laptop.ad.hasOwnProperty('thumbnail')" 
+          src="../assets/laptop.png">
+        <ion-card-content>
+          <h2 *ngIf="laptop.ad.hasOwnProperty('subject')">
+            {{laptop.ad.subject}}
+          </h2>
+          <p>{{laptop.ad.locations[0].locations[0].label}}, {{laptop.ad.locations[0].label}}</p>
+          <h2 *ngIf="laptop.ad.hasOwnProperty('list_price')">
+            {{laptop.ad.list_price.label}}
+          </h2>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>  
+
+

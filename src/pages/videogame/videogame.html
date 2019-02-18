@@ -1,0 +1,47 @@
+<!--
+  Generated template for the VideogamePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="favoritos()">
+        <ion-icon name="star"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title style = background-color:#8BBEB2>
+      Segunda Mano
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="buscar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding style = background-color:#E6F9AF>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let vg of videogame" col-6>
+        <ion-card (click)="VerVG(vg)">
+          <img *ngIf="vg.ad.hasOwnProperty('thumbnail')"
+            src="http://img.segundamano.mx/cover/{{vg.ad.thumbnail.path}}">
+          <img *ngIf="!vg.ad.hasOwnProperty('thumbnail')" 
+          src="../assets/vg.png">
+          <ion-card-content>
+            <h2 *ngIf="vg.ad.hasOwnProperty('subject')">
+              {{vg.ad.subject}}
+            </h2>
+            <p>{{vg.ad.locations[0].locations[0].label}}, {{vg.ad.locations[0].label}}</p>
+            <h2 *ngIf="vg.ad.hasOwnProperty('list_price')">
+              {{vg.ad.list_price.label}}
+            </h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
