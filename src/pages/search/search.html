@@ -7,13 +7,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Search</ion-title>
+    <ion-title style = background-color:#1A2A33>Search</ion-title>
   </ion-navbar>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style = background-color:#183A37>
   <ion-list>
     <ion-item *ngFor="let item of items">
       <ion-thumbnail item-start>
